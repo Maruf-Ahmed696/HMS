@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Support System</title>
+    <link rel="stylesheet" href="../assets/Customer support.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <img src="../assets/About Us.png" alt="Logo" id="Logo" class="Logo">
+        <h1 id="hostel-name">Grand Hotel</h1>
+    </header>
+
+    <br>
+
+    <div class="container">
+        
+        <div class="box">
+            <h3>Submit Complaint</h3>
+            <input type="text" id="username" placeholder="Your Name">
+            <textarea id="issue" placeholder="Describe your problem"></textarea>
+            <button onclick="submitComplaint()">Submit</button>
+        </div>
+
+        <div class="box">
+            <h3>Check Status</h3>
+            <input type="text" id="checkId" placeholder="Enter Ticket ID">
+            <button onclick="checkStatus()">Search</button>
+            <p id="result"></p> 
+        </div>
+
+    </div>
+
+    <script src="../assets/Customer support.css"></script>
+</body>
+</html>
