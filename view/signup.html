@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Hotel - Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="language-switcher">
+        <select id="languageSelect" onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>🏨 Grand Hotel</h1>
+                <h2 data-translate="create_account">Create Your Account</h2>
+            </div>
+
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label for="name" data-translate="full_name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    <span class="error-message" id="nameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" data-translate="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" data-translate="username">Username</label>
+                    <input type="text" id="username" name="username" required placeholder="Choose a username">
+                    <span class="error-message" id="usernameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" data-translate="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="At least 8 characters">
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="repassword" data-translate="confirm_password">Confirm Password</label>
+                    <input type="password" id="repassword" name="repassword" required placeholder="Re-enter your password">
+                    <span class="error-message" id="repasswordError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="role" data-translate="account_type">Account Type</label>
+                    <select id="role" name="role">
+                        <option value="guest" data-translate="role_guest">Guest</option>
+                        <option value="staff" data-translate="role_staff">Staff</option>
+                        <option value="admin" data-translate="role_admin">Admin</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full" data-translate="sign_up">Sign Up</button>
+
+                <div class="auth-footer">
+                    <p><span data-translate="already_have_account">Already have an account?</span> <a href="signin.html" data-translate="sign_in">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="language.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', handleSignup);
+    </script>
+</body>
+</html>

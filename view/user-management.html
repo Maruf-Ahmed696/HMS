@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Hotel - User Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h1>🏨 Grand Hotel</h1>
+            <span class="nav-subtitle" data-translate="admin_panel">Admin Panel</span>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html" data-translate="dashboard">Dashboard</a>
+            <a href="user-management.html" class="active" data-translate="users">Users</a>
+            <a href="reports.html" data-translate="reports">Reports</a>
+        </div>
+        <div class="nav-right">
+            <select id="languageSelect" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+            </select>
+            <div class="user-info">
+                <span id="userName">Admin</span>
+                <button onclick="logout()" class="btn btn-small" data-translate="logout">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-main">
+        <div class="dashboard-header">
+            <h2 data-translate="user_management">User Management</h2>
+            <p data-translate="user_management_subtitle">Manage all system users</p>
+        </div>
+
+        <div class="controls-bar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search users..." data-translate-placeholder="search_users" onkeyup="searchUsers()">
+            </div>
+            <div class="filter-controls">
+                <select id="roleFilter" onchange="filterUsers()">
+                    <option value="all" data-translate="all_roles">All Roles</option>
+                    <option value="guest" data-translate="role_guest">Guest</option>
+                    <option value="staff" data-translate="role_staff">Staff</option>
+                    <option value="admin" data-translate="role_admin">Admin</option>
+                </select>
+                <select id="statusFilter" onchange="filterUsers()">
+                    <option value="all" data-translate="all_status">All Status</option>
+                    <option value="active" data-translate="status_active">Active</option>
+                    <option value="suspended" data-translate="status_suspended">Suspended</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th data-translate="name">Name</th>
+                        <th data-translate="email">Email</th>
+                        <th data-translate="username">Username</th>
+                        <th data-translate="role">Role</th>
+                        <th data-translate="status">Status</th>
+                        <th data-translate="joined">Joined</th>
+                        <th data-translate="actions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <button onclick="prevPage()" class="btn btn-small" data-translate="previous">Previous</button>
+            <span id="pageInfo">Page 1</span>
+            <button onclick="nextPage()" class="btn btn-small" data-translate="next">Next</button>
+        </div>
+    </main>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-translate="edit_user">Edit User</h3>
+                <button onclick="closeModal()" class="close-btn">&times;</button>
+            </div>
+            <form id="editUserForm">
+                <input type="hidden" id="editUserId">
+                <div class="form-group">
+                    <label for="editName" data-translate="full_name">Full Name</label>
+                    <input type="text" id="editName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editEmail" data-translate="email">Email</label>
+                    <input type="email" id="editEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="editRole" data-translate="role">Role</label>
+                    <select id="editRole">
+                        <option value="guest">Guest</option>
+                        <option value="staff">Staff</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" onclick="closeModal()" class="btn btn-secondary" data-translate="cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary" data-translate="save_changes">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="confirmModal" class="modal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h3 id="confirmTitle">Confirm Action</h3>
+                <button onclick="closeConfirmModal()" class="close-btn">&times;</button>
+            </div>
+            <p id="confirmMessage"></p>
+            <div class="modal-actions">
+                <button onclick="closeConfirmModal()" class="btn btn-secondary" data-translate="cancel">Cancel</button>
+                <button id="confirmAction" class="btn btn-danger" data-translate="confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="language.js"></script>
+    <script src="auth.js"></script>
+    <script src="users.js"></script>
+    <script>
+        checkAdminAuth();
+        initUserManagement();
+    </script>
+</body>
+</html>

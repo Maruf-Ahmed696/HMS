@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Hotel - Reports & Analytics</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h1>🏨 Grand Hotel</h1>
+            <span class="nav-subtitle" data-translate="admin_panel">Admin Panel</span>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html" data-translate="dashboard">Dashboard</a>
+            <a href="user-management.html" data-translate="users">Users</a>
+            <a href="reports.html" class="active" data-translate="reports">Reports</a>
+        </div>
+        <div class="nav-right">
+            <select id="languageSelect" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+            </select>
+            <div class="user-info">
+                <span id="userName">Admin</span>
+                <button onclick="logout()" class="btn btn-small" data-translate="logout">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-main">
+        <div class="dashboard-header">
+            <h2 data-translate="reports_analytics">Reports & Analytics</h2>
+            <p data-translate="reports_subtitle">Generate and export detailed reports</p>
+        </div>
+
+        <div class="report-generator">
+            <div class="report-card">
+                <h3 data-translate="generate_report">Generate Report</h3>
+                <form id="reportForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="reportType" data-translate="report_type">Report Type</label>
+                            <select id="reportType">
+                                <option value="users" data-translate="user_report">User Report</option>
+                                <option value="bookings" data-translate="booking_report">Booking Report</option>
+                                <option value="revenue" data-translate="revenue_report">Revenue Report</option>
+                                <option value="activity" data-translate="activity_report">Activity Report</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateFrom" data-translate="date_from">Date From</label>
+                            <input type="date" id="dateFrom">
+                        </div>
+                        <div class="form-group">
+                            <label for="dateTo" data-translate="date_to">Date To</label>
+                            <input type="date" id="dateTo">
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary" data-translate="generate_report">Generate Report</button>
+                        <button type="button" onclick="exportCSV()" class="btn btn-secondary" data-translate="export_csv">Export CSV</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="reportResults" class="report-results" style="display: none;">
+            <div class="report-header">
+                <h3 id="reportTitle"></h3>
+                <span id="reportDateRange"></span>
+            </div>
+
+            <div class="report-summary">
+                <div class="summary-card">
+                    <h4 id="summaryLabel1">Total</h4>
+                    <p id="summaryValue1">0</p>
+                </div>
+                <div class="summary-card">
+                    <h4 id="summaryLabel2">Average</h4>
+                    <p id="summaryValue2">0</p>
+                </div>
+                <div class="summary-card">
+                    <h4 id="summaryLabel3">Peak</h4>
+                    <p id="summaryValue3">0</p>
+                </div>
+            </div>
+
+            <div class="report-chart">
+                <canvas id="reportChart"></canvas>
+            </div>
+
+            <div class="report-table-container">
+                <table class="data-table" id="reportTable">
+                    <thead id="reportTableHead">
+                    </thead>
+                    <tbody id="reportTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="quick-reports">
+            <h3 data-translate="quick_reports">Quick Reports</h3>
+            <div class="quick-reports-grid">
+                <div class="quick-report-card" onclick="generateQuickReport('daily')">
+                    <span class="report-icon">📊</span>
+                    <h4 data-translate="daily_summary">Daily Summary</h4>
+                    <p data-translate="daily_summary_desc">Today's activity overview</p>
+                </div>
+                <div class="quick-report-card" onclick="generateQuickReport('weekly')">
+                    <span class="report-icon">📈</span>
+                    <h4 data-translate="weekly_report">Weekly Report</h4>
+                    <p data-translate="weekly_report_desc">Last 7 days statistics</p>
+                </div>
+                <div class="quick-report-card" onclick="generateQuickReport('monthly')">
+                    <span class="report-icon">📅</span>
+                    <h4 data-translate="monthly_report">Monthly Report</h4>
+                    <p data-translate="monthly_report_desc">This month's performance</p>
+                </div>
+                <div class="quick-report-card" onclick="generateQuickReport('users')">
+                    <span class="report-icon">👥</span>
+                    <h4 data-translate="user_analytics">User Analytics</h4>
+                    <p data-translate="user_analytics_desc">User statistics and trends</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="translations.js"></script>
+    <script src="language.js"></script>
+    <script src="auth.js"></script>
+    <script src="reports.js"></script>
+    <script>
+        checkAdminAuth();
+        initReports();
+    </script>
+</body>
+</html>
