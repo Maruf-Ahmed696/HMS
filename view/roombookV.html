@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Room Management</title>
+    <link rel="stylesheet" href="../Asset/css/roombookCss.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Room Booking</h2>
+        <form id="bookingForm">
+            <div>
+                <label for="customerName">Customer Name:</label>
+                <input type="text" id="customerName" name="customerName">
+                <span class="error-message" id="errorCustomerName"></span>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <span class="error-message" id="errorEmail"></span>
+            </div>
+
+            <div>
+                <label for="roomType">Room Type:</label>
+                <select id="roomType" name="roomType">
+                    <option value="">Select Room</option>
+                    <option value="single">Single Room-1000 BDT</option>
+                    <option value="double">Double Room-1500 BDT</option>
+                    <option value="suite">Suite Room-2500 BDT</option>
+                </select>
+                <span class="error-message" id="errorRoomType"></span>
+            </div>
+
+            <div>
+                <label for="bookingDays">Number of Days:</label>
+                <input type="number" id="bookingDays" name="bookingDays">
+                <span class="error-message" id="errorBookingDays"></span>
+            </div>
+            <div>
+                <label for="discountCode">Discount Code (optional):</label>
+                <input type="text" id="discountCode" name="discountCode">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="confirmation" style="display: none;">
+            <h3>Booking Confirmation</h3>
+            <p><strong>Booking ID:</strong> <span id="bookingID"></span></p>
+            <p><strong>Name:</strong> <span id="confirmationName"></span></p>
+            <p><strong>Booking Days:</strong> <span id="confirmationDays"></span></p>
+            <p><strong>Room Type:</strong> <span id="confirmationRoomType"></span></p>
+            <p><strong>Total Price (Before Discount):</strong> <span id="confirmationOriginalPrice"></span> BDT</p>
+            <p><strong>Total Price After Discount:</strong> <span id="confirmationPrice"></span> BDT</p>
+        </div>
+
+        <script src="../Asset/js/roombookJs.js"></script>
+</body>
+
+</html>
