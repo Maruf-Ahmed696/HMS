@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Event Reservation System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f8;
+    padding:20px;
+}
+.container{
+    max-width:850px;
+    margin:auto;
+    background:#fff;
+    padding:20px;
+    border-radius:8px;
+}
+h2{text-align:center;}
+.card{
+    border:1px solid #ddd;
+    padding:15px;
+    border-radius:6px;
+    margin-bottom:15px;
+}
+.admin{background:#fef3c7;}
+.hidden{display:none;}
+label{font-weight:bold;}
+input, select, button{
+    width:100%;
+    padding:8px;
+    margin-top:6px;
+}
+button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+button:hover{background:#1e40af;}
+.success{color:green;font-weight:bold;}
+.error{color:red;font-weight:bold;}
+.role-switch{
+    margin-bottom:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Event Reservation System</h2>
+
+
+<div class="card role-switch">
+    <label>Select Mode</label>
+    <select onchange="switchRole(this.value)">
+        <option value="guest">Guest Mode</option>
+        <option value="admin">Admin Mode</option>
+    </select>
+</div>
+
+
+<div class="card">
+    <label>Select Event</label>
+    <select id="eventSelect" onchange="loadEvent()"></select>
+
+    <h3 id="eventTitle"></h3>
+    <p id="eventDesc"></p>
+    <p><b>Total Seats:</b> <span id="totalSeats"></span></p>
+    <p><b>Available Seats:</b> <span id="availableSeats"></span></p>
+</div>
+
+
+<div class="card" id="guestPanel">
+    <h3>Guest Seat Reservation</h3>
+
+    <label>Email</label>
+    <input type="email" id="guestEmail">
+    
+    <label>Number of Seats</label>
+    <input type="number" id="seatInput" min="1">
+
+    <button onclick="reserveSeats()">Reserve Seat</button>
+    <p id="guestMsg"></p>
+</div>
+
+
+<div class="card admin hidden" id="adminPanel">
+    <h3>Admin Seat Management</h3>
+
+    <label>Update Total Seats</label>
+    <input type="number" id="adminSeatInput">
+
+    <button onclick="updateSeats()">Update Capacity</button>
+    <p id="adminMsg"></p>
+</div>
+
+</div>
+
+<script src="script3.js"></script>
+</body>
+</html>
