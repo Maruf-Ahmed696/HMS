@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Guest Notification System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    padding:20px;
+}
+.container{
+    max-width:900px;
+    margin:auto;
+}
+h2{
+    margin-bottom:10px;
+}
+.role-switch{
+    margin-bottom:15px;
+}
+.card{
+    background:#fff;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:15px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+.notification{
+    padding:10px;
+    border-left:5px solid #2563eb;
+    margin-bottom:8px;
+    background:#f9fafb;
+}
+.time{
+    font-size:12px;
+    color:#666;
+}
+.admin-panel{
+    display:none;
+}
+button{
+    padding:8px 12px;
+    border:none;
+    background:#2563eb;
+    color:#fff;
+    border-radius:4px;
+    cursor:pointer;
+}
+button:hover{
+    opacity:0.9;
+}
+select, textarea{
+    width:100%;
+    padding:8px;
+    margin:5px 0;
+}
+
+/* Notification colors */
+.booking { border-left-color:#2563eb; }   /* Blue */
+.payment { border-left-color:#16a34a; }   /* Green */
+.offer   { border-left-color:#f59e0b; }   /* Orange */
+.system  { border-left-color:#dc2626; }   /* Red */
+.general { border-left-color:#6b7280; }   /* Gray */
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h2>Guest Notification System</h2>
+
+<!-- Role Switch -->
+<div class="role-switch">
+    <label><input type="radio" name="role" value="guest" checked> Guest</label>
+    <label><input type="radio" name="role" value="admin"> Admin</label>
+</div>
+
+<!-- Admin Panel -->
+<div class="card admin-panel" id="adminPanel">
+    <h3>Admin Broadcast Message</h3>
+
+    <label>
+        <input type="checkbox" id="systemToggle" checked>
+        System Alert ON
+    </label>
+
+    <select id="type">
+        <option>Booking Alert</option>
+        <option>Payment Notification</option>
+        <option>Event & Offer</option>
+        <option>General Announcement</option>
+    </select>
+
+    <textarea id="message" placeholder="Write notification..."></textarea>
+    <button onclick="sendNotification()">Send Notification</button>
+</div>
+
+<!-- Notification Panel -->
+<div class="card">
+    <h3>Notification Panel</h3>
+    <div id="notificationList"></div>
+</div>
+
+</div>
+
+<script src="script4.js"></script>
+</body>
+</html>
