@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* সুন্দর ব্যাকগ্রাউন্ড কালার */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
 }
 
@@ -34,7 +34,7 @@ body {
 
 .support-card {
     background: white;
-    width: 400px; /* কার্ডের চওড়া */
+    width: 400px;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -51,7 +51,7 @@ input, textarea {
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-sizing: border-box; /* বক্সের সাইজ ঠিক রাখে */
+    box-sizing: border-box; 
     font-family: inherit;
 }
 
