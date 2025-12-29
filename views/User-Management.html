@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Hotel - User Management</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1e293b;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+
+        .nav-links a.active {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .dashboard-main {
+            padding: 20px;
+        }
+
+        .controls-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        input, select {
+            padding: 6px;
+        }
+
+        .table-container {
+            background: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #e5e7eb;
+        }
+
+        .btn {
+            padding: 6px 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btn-small {
+            font-size: 12px;
+        }
+
+        .edit { background: #2563eb; color: #fff; }
+        .suspend { background: #f59e0b; color: #fff; }
+        .activate { background: #16a34a; color: #fff; }
+        .delete { background: #dc2626; color: #fff; }
+
+        .pagination {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            width: 350px;
+            border-radius: 6px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body onload="initUserManagement()">
+
+    <nav class="navbar">
+        <h2>Grand Hotel</h2>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="user-management.html" class="active">Users</a>
+            <a href="reports.html">Reports</a>
+        </div>
+    </nav>
+
+    <main class="dashboard-main">
+        <h2>User Management</h2>
+
+        <div class="controls-bar">
+            <input type="text" id="searchInput" placeholder="Search users..." onkeyup="searchUsers()">
+
+            <div>
+                <select id="roleFilter" onchange="filterUsers()">
+                    <option value="all">All Roles</option>
+                    <option value="guest">Guest</option>
+                    <option value="staff">Staff</option>
+                    <option value="admin">Admin</option>
+                </select>
+
+                <select id="statusFilter" onchange="filterUsers()">
+                    <option value="all">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="suspended">Suspended</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Joined</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <button class="btn btn-small" onclick="prevPage()">Previous</button>
+            <span id="pageInfo">Page 1</span>
+            <button class="btn btn-small" onclick="nextPage()">Next</button>
+        </div>
+    </main>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit User</h3>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+
+            <form id="editUserForm">
+                <input type="hidden" id="editUserId">
+
+                <label>Name</label>
+                <input type="text" id="editName" required>
+
+                <label>Email</label>
+                <input type="email" id="editEmail" required>
+
+                <label>Role</label>
+                <select id="editRole">
+                    <option value="guest">Guest</option>
+                    <option value="staff">Staff</option>
+                    <option value="admin">Admin</option>
+                </select>
+
+                <br><br>
+                <button class="btn edit" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="confirmTitle"></h3>
+                <button class="close-btn" onclick="closeConfirmModal()">×</button>
+            </div>
+            <p id="confirmMessage"></p>
+            <button id="confirmAction" class="btn delete">Confirm</button>
+        </div>
+    </div>
+
+    <script src="Script6.js"></script>
+</body>
+</html>
