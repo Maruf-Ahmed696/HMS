@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Scheduling</title>
+    <link rel="stylesheet" href="../Asset/css/staffschedCss.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Staff Scheduling</h2>
+
+
+        <form id="shiftForm">
+            <h3>Assign Shift</h3>
+
+
+            <label for="shiftType">Shift Type:</label>
+            <select id="shiftType">
+                <option value="">--Select Shift--</option>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="night">Night</option>
+            </select>
+            <span id="errorShiftType" class="error-message"></span><br><br>
+
+
+            <label for="startTime">Start Time:</label>
+            <input type="time" id="startTime">
+            <span id="errorStartTime" class="error-message"></span><br><br>
+
+
+            <label for="endTime">End Time:</label>
+            <input type="time" id="endTime">
+            <span id="errorEndTime" class="error-message"></span><br><br>
+
+
+            <label>
+                <input type="checkbox" id="shiftNotification">
+                Notify staff about the shift
+            </label><br><br>
+
+
+            <button type="submit">Assign Shift</button>
+            <p id="formError" style="color:red; display:none;">Please fill in all required fields.</p>
+        </form>
+
+
+        <div id="confirmation" style="display:none;">
+            <h3>Shift Assigned Successfully</h3>
+            <p>Shift Type: <span id="confirmationShiftType"></span></p>
+            <p>Start Time: <span id="confirmationStartTime"></span></p>
+            <p>End Time: <span id="confirmationEndTime"></span></p>
+            <p>Shift Notification: <span id="confirmationNotification"></span></p>
+        </div>
+    </div>
+
+    <script src="../Asset/js/staffschedJs.js"></script>
+</body>
+
+</html>
