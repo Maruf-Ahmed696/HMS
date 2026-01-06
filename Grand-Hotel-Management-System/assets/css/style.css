@@ -1,0 +1,168 @@
+/* =========================
+   GLOBAL / BODY
+========================= */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+    color: #222;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    background: #ffffff;
+    padding: 20px 25px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   HEADINGS
+========================= */
+h1, h2, h3 {
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+/* =========================
+   FORM ELEMENTS
+========================= */
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+button {
+    margin-top: 10px;
+    padding: 7px 14px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #1e40af;
+}
+
+/* =========================
+   EVENT CARDS (EventManagement + EventList)
+========================= */
+.event {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.event:last-child {
+    border: none;
+}
+
+/* =========================
+   ROLE SWITCH (EventList)
+========================= */
+.role-switch {
+    margin-bottom: 15px;
+}
+
+/* =========================
+   TABLE (User + Report)
+========================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th {
+    background: #e5e7eb;
+    padding: 10px;
+    text-align: left;
+}
+
+td {
+    padding: 8px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+tr:hover {
+    background: #f9fafb;
+}
+
+/* =========================
+   NOTIFICATIONS
+========================= */
+.notification {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid;
+    background: #f8fafc;
+}
+
+.booking { border-left-color:#16a34a; }      /* green */
+.payment { border-left-color:#2563eb; }      /* blue */
+.offer   { border-left-color:#f59e0b; }      /* orange */
+.general { border-left-color:#6b7280; }      /* gray */
+
+.notification .time {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+/* =========================
+   REPORT PAGE
+========================= */
+.report-icon {
+    font-size: 28px;
+}
+
+canvas {
+    margin-top: 20px;
+}
+
+/* =========================
+   USER MANAGEMENT MODAL
+========================= */
+#editModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#editModal form {
+    background: white;
+    padding: 20px;
+    width: 300px;
+    border-radius: 6px;
+}
+
+/* =========================
+   ACTION BUTTONS (User page)
+========================= */
+.action-btn {
+    padding: 5px 8px;
+    font-size: 13px;
+    cursor: pointer;
+}
