@@ -19,7 +19,7 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     text-align: center;
-    width: 300px;
+    width: 350px;
 }
 
 h2 {
@@ -51,6 +51,7 @@ button:hover {
 
 #confirmation {
     margin-top: 20px;
+    text-align: left;
 }
 
 .error-message {
@@ -58,4 +59,12 @@ button:hover {
     font-size: 12px;
     display: inline-block;
     margin-top: 5px;
+}
+
+#confirmation p {
+    margin-bottom: 10px;
+}
+
+#confirmation span {
+    font-weight: bold;
 }
