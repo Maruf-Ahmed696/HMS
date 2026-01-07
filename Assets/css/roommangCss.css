@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -13,7 +12,6 @@ body {
     align-items: center;
     height: 100vh;
 }
-
 
 .container {
     background-color: white;
@@ -24,12 +22,10 @@ body {
     width: 350px;
 }
 
-
 h2 {
     margin-bottom: 20px;
     color: #333;
 }
-
 
 input,
 select {
@@ -39,7 +35,6 @@ select {
     border-radius: 4px;
     margin-bottom: 10px;
 }
-
 
 button {
     padding: 10px 20px;
@@ -54,12 +49,10 @@ button:hover {
     background-color: #45a049;
 }
 
-
 #confirmation {
     margin-top: 20px;
     text-align: left;
 }
-
 
 .error-message {
     color: red;
@@ -67,7 +60,6 @@ button:hover {
     display: inline-block;
     margin-top: 5px;
 }
-
 
 #confirmation p {
     margin-bottom: 10px;
