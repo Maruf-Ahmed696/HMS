@@ -5,49 +5,56 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f4f4f4;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
 }
 
 .container {
-    background-color: #ffffff;
+    background-color: white;
     padding: 30px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 380px;
     border-radius: 10px;
-    width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     text-align: left;
 }
 
 h2 {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     color: #2c3e50;
     text-align: center;
-    font-size: 24px;
     border-bottom: 2px solid #4CAF50;
     padding-bottom: 10px;
+}
+
+h3 {
+    margin-bottom: 15px;
+    color: #34495e;
+    font-size: 18px;
+    text-align: center;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
     font-weight: 600;
-    color: #444;
+    color: #555;
     font-size: 14px;
 }
 
-input,
+input[type="text"],
+input[type="time"],
 select {
-    padding: 12px;
+    padding: 10px;
     width: 100%;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     font-size: 14px;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s;
 }
 
 input:focus,
@@ -56,52 +63,53 @@ select:focus {
     outline: none;
 }
 
+
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+}
+
 button {
     width: 100%;
     padding: 12px;
     background-color: #4CAF50;
-    color: white;
     border: none;
-    cursor: pointer;
     border-radius: 5px;
+    color: white;
+    cursor: pointer;
     font-size: 16px;
     font-weight: bold;
     margin-top: 15px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
 button:hover {
     background-color: #45a049;
 }
 
+
 .error-message {
     color: #ff0000 !important;
     font-size: 12px;
     font-weight: bold;
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     min-height: 15px;
 
 }
 
 #confirmation {
-    margin-top: 25px;
+    margin-top: 20px;
     padding: 15px;
     background-color: #e8f5e9;
-    border-left: 5px solid #4CAF50;
-    border-radius: 4px;
-}
-
-#confirmation h3 {
-    color: #2e7d32;
-    font-size: 18px;
-    margin-bottom: 10px;
+    border: 1px solid #c8e6c9;
+    border-radius: 5px;
 }
 
 #confirmation p {
-    font-size: 14px;
-    color: #333;
+    font-size: 13px;
     margin-bottom: 5px;
+    color: #333;
 }
 
 #confirmation span {
