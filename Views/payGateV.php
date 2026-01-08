@@ -1,104 +1,43 @@
-<?php
-session_start();
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['payment_method'])) {
-    $_SESSION['method'] = $_POST['payment_method'];
-}
-
-$method = $_SESSION['method'] ?? '';
-$errors = $_SESSION['errors'] ?? [];
-$success = $_SESSION['success'] ?? null;
-
-unset($_SESSION['errors'], $_SESSION['success']);
-?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <title>Payment Gateway</title>
     <link rel="stylesheet" href="../Assets/css/payGate.css">
 </head>
 
 <body>
-
     <div class="container">
-
-
-        <form method="POST">
+        <form id="payForm">
             <h3>Payment Gateway</h3>
 
-            <label><input type="radio" name="payment_method" value="Bkash" <?= ($method == "Bkash") ? 'checked' : '' ?>>
-                Bkash</label>
-            <label><input type="radio" name="payment_method" value="Nagad" <?= ($method == "Nagad") ? 'checked' : '' ?>>
-                Nagad</label>
-            <label><input type="radio" name="payment_method" value="Rocket" <?= ($method == "Rocket") ? 'checked' : '' ?>>
-                Rocket</label>
-            <label><input type="radio" name="payment_method" value="Visa" <?= ($method == "Visa") ? 'checked' : '' ?>> Visa
-                Card</label>
-
-            <p class="error">
-                <?= $errors['method'] ?? '' ?>
-            </p>
-
-            <button type="submit">Proceed</button>
-        </form>
-
-        <?php if ($method != '') { ?>
-            <form action="../Controllers/payGateC.php" method="POST">
-
-                <input type="hidden" name="payment_method" value="<?= $method ?>">
-
-                <input type="text" name="owner"
-                    placeholder="<?= $method == 'Visa' ? 'Card Owner Name' : 'Number Owner Name' ?>">
-                <p class="error">
-                    <?= $errors['owner'] ?? '' ?>
-                </p>
-
-                <input type="text" name="number" placeholder="<?= $method == 'Visa' ? 'Card Number' : 'Account Number' ?>">
-                <p class="error">
-                    <?= $errors['number'] ?? '' ?>
-                </p>
-
-                <input type="text" name="amount" placeholder="Amount">
-                <p class="error">
-                    <?= $errors['amount'] ?? '' ?>
-                </p>
-
-                <?php if ($method == "Visa") { ?>
-                    <input type="password" name="cvc" placeholder="CVC">
-                    <p class="error">
-                        <?= $errors['cvc'] ?? '' ?>
-                    </p>
-                <?php } else { ?>
-                    <input type="password" name="pin" placeholder="PIN">
-                    <p class="error">
-                        <?= $errors['pin'] ?? '' ?>
-                    </p>
-                <?php } ?>
-
-                <button type="submit">Complete Order</button>
-            </form>
-        <?php } ?>
-
-
-        <?php if ($success) { ?>
-            <div class="success">
-                <p>Your Payment has done Successfully!!</p>
-                <p>Payment Method :
-                    <?= $success['method'] ?>
-                </p>
-                <p>Owner Name :
-                    <?= $success['owner'] ?>
-                </p>
-                <p>Amount :
-                    <?= $success['amount'] ?> BDT
-                </p>
+            <div class="method-selection">
+                <label><input type="radio" name="payment_method" value="Bkash"> Bkash</label>
+                <label><input type="radio" name="payment_method" value="Nagad"> Nagad</label>
+                <label><input type="radio" name="payment_method" value="Rocket"> Rocket</label>
+                <label><input type="radio" name="payment_method" value="Visa"> Visa Card</label>
             </div>
-        <?php } ?>
+            <div class="error" id="methodErr"></div>
 
+            <div id="dynamicFields" style="display:none; margin-top: 20px;">
+                <input type="text" id="owner" placeholder="Owner Name">
+                <div class="error" id="ownerErr"></div>
+
+                <input type="text" id="number" placeholder="Account Number">
+                <div class="error" id="numberErr"></div>
+
+                <input type="text" id="amount" placeholder="Amount">
+                <div class="error" id="amountErr"></div>
+
+                <input type="password" id="securityCode" placeholder="PIN/CVC">
+                <div class="error" id="securityErr"></div>
+
+                <button type="button" id="payBtn">Complete Order</button>
+            </div>
+        </form>
     </div>
-
+    <script src="../Assets/js/payGate.js"></script>
 </body>
 
 </html>

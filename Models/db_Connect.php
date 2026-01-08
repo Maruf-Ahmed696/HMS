@@ -1,7 +1,16 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "hotel_management");
 
-if (!$conn) {
-    die("Database connection failed");
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "hotel_management";
+
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 ?>
